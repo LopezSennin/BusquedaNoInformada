@@ -158,6 +158,8 @@ class Juego:
             self.matriztemporal[coordenada[0],coordenada[1]]=1
             self.mostrarImagenes2(self.matriztemporal)
             pygame.time.wait(1000)
+            if [coordenada[0],coordenada[1]]==lista[len(lista)-1]:
+                break
 
     def run(self):
         self.crearObjeto()
@@ -177,7 +179,6 @@ class Juego:
                     self.corre=False
                         
 
-    
 ###############################################################################################
 
 class Jugador():
