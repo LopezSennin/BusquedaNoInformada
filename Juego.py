@@ -26,6 +26,7 @@ class Juego:
 
     # escenario/tablero
     escenario = extraer_matriz("matriz.txt") # matriz del nivel
+    matriztemporal  = extraer_matriz("matriz.txt")
     filas = 4
     columnas = 5
 
@@ -126,22 +127,22 @@ class Juego:
         self.cargarImagen()
         for i in range(self.filas):
             for j in range(self.columnas):
-                if self.matriz[i][j]==0:
+                if matriz[i][j]==0:
                     escala=pygame.transform.scale(self.blanco,[self.anchoT,self.altoT])
                     self.ventana.blit(escala,[j*100,i*100])
-                elif self.matriz[i][j]==1:
+                elif matriz[i][j]==1:
                     escala=pygame.transform.scale(self.mononoke,[self.anchoT,self.altoT])
                     self.ventana.blit(escala,[j*100,i*100])
-                elif self.matriz[i][j]==2:
+                elif matriz[i][j]==2:
                     escala=pygame.transform.scale(self.fantasma,[self.anchoT,self.altoT])
                     self.ventana.blit(escala,[j*100,i*100])
-                elif self.matriz[i][j]==3:
+                elif matriz[i][j]==3:
                     escala=pygame.transform.scale(self.negro,[self.anchoT,self.altoT])
                     self.ventana.blit(escala,[j*100,i*100])
-                elif self.matriz[i][j]==4:
+                elif matriz[i][j]==4:
                     escala=pygame.transform.scale(self.venado,[self.anchoT,self.altoT])
                     self.ventana.blit(escala,[j*100,i*100])
-                elif self.matriz[i][j]==5:
+                elif matriz[i][j]==5:
                     escala=pygame.transform.scale(self.espiritu,[self.anchoT,self.altoT])
                     self.ventana.blit(escala,[j*100,i*100])
         self.rejilla()     
@@ -152,20 +153,18 @@ class Juego:
     def agenteRecorraMatriz(self, lista):
         
         for coordenada in lista:
-            matriztemporal  = np.loadtxt(self.escenario,skiprows=0)
-            ubicacion_del_agente=busqueda.ubicacionDelJugador(matriztemporal)
-            matriztemporal[ubicacion_del_agente[0],ubicacion_del_agente[1]]=0
-            matriztemporal[coordenada[0],coordenada[1]]=1
-            self.mostrarImagenes2(matriztemporal)
+            ubicacion_del_agente=busqueda.ubicacionDelJugador(self.matriztemporal)
+            self.matriztemporal[ubicacion_del_agente[0],ubicacion_del_agente[1]]=0
+            self.matriztemporal[coordenada[0],coordenada[1]]=1
+            self.mostrarImagenes2(self.matriztemporal)
             pygame.time.wait(1000)
-
-
 
     def run(self):
         self.crearObjeto()
         while self.corre:
             self.eventos()  
             self.agenteRecorraMatriz(busqueda.rutaOptima(self.escenario))
+            self.mostrarImagenes()
             #self.jugador.update()
             #self.jugador.mover(self.lista_mov)
             pygame.display.flip()

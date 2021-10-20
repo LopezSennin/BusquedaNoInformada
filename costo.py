@@ -169,8 +169,8 @@ def pasoPorMontura(lista, ubicacionMontura):
 
 
 def copiarListaEnOtraLista_aux(lista_fuente, lista_destino, nodo_actual, nodo_anterior):
-    if nodoactual == nodoAnterior:
-        lista_destino = [nodoactual]
+    if nodo_actual == nodo_anterior:
+        lista_destino = [nodo_actual]
     else:
         lista_destino = []
         for i in range(len(lista_fuente)):
