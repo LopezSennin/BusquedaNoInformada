@@ -152,7 +152,7 @@ class Juego:
     def agenteRecorraMatriz(self, lista):
         
         for coordenada in lista:
-            matriztemporal  = np.loadtxt(self.escenario,skiprows=0)
+            matriztemporal  = np.loadtxt("matriz.txt",skiprows=0)
             ubicacion_del_agente=busqueda.ubicacionDelJugador(matriztemporal)
             matriztemporal[ubicacion_del_agente[0],ubicacion_del_agente[1]]=0
             matriztemporal[coordenada[0],coordenada[1]]=1
@@ -254,7 +254,7 @@ class Venado():
         #print("venado")
 
 ###############################################################################################
-  
+
 class Espiritu():
     def __init__(self,pos,y,x):
         self.x = x
