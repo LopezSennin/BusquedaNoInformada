@@ -1,6 +1,9 @@
 from typing import Any
 import numpy as np
 import queue as Queue
+from numpy.core.fromnumeric import shape
+
+from numpy.lib import shape_base
 
 
 tablero = np.loadtxt('matriz.txt', skiprows=0)
@@ -176,6 +179,10 @@ def copiarListaEnOtraLista_aux(lista_fuente, lista_destino, nodo_actual, nodo_an
         for i in range(len(lista_fuente)):
             lista_destino[len(lista_fuente):] = [lista_fuente[i]]
 
+def copiarMatrizEnOtraMatriz_aux(matriz_fuente, matriz_destino):
+    for i in range(matriz_fuente.shape[0]):
+        for j in range(matriz_fuente.shape[1]):
+            matriz_fuente[i,j]=matriz_destino[i,j]
 
 def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista, costoAcomulado, matrizCosto):
 
