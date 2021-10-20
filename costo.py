@@ -87,10 +87,10 @@ def puedeIrHacia(desde, hacia, matriz):
             else:
                 return False
         except IndexError:
-            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
+            print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     else:
-        #print("ERROR: ingreso valor \"hacia\" no valido. Usted ingreso {} \n \n".format(hacia) * 3)
+        print("ERROR: ingreso valor \"hacia\" no valido. Usted ingreso {} \n \n".format(hacia) * 3)
 
 
 def ubicacionHacia(desde, hacia, matriz):
@@ -140,10 +140,10 @@ def ubicacionHacia(desde, hacia, matriz):
             else:
                 return False
         except IndexError:
-            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
+            print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     else:
-        #print("ERROR: ingreso valor \"hacia\" no valido. Usted ingreso {} \n \n".format(hacia) * 3)
+        print("ERROR: ingreso valor \"hacia\" no valido. Usted ingreso {} \n \n".format(hacia) * 3)
 
 
 def ubicacionMeta(matrizBase):
