@@ -151,22 +151,27 @@ class Juego:
 
 
     def agenteRecorraMatriz(self, lista):
-        
+        contador = 0
         for coordenada in lista:
             ubicacion_del_agente=busqueda.ubicacionDelJugador(self.matriztemporal)
             self.matriztemporal[ubicacion_del_agente[0],ubicacion_del_agente[1]]=0
             self.matriztemporal[coordenada[0],coordenada[1]]=1
             self.mostrarImagenes2(self.matriztemporal)
             pygame.time.wait(1000)
+            contador=contador+1
             if [coordenada[0],coordenada[1]]==lista[len(lista)-1]:
+                return False
+                break
+            if contador==len(lista):
+                return False
                 break
 
     def run(self):
         self.crearObjeto()
         while self.corre:
-            self.eventos()  
-            self.agenteRecorraMatriz(busqueda.rutaOptima(self.escenario))
-            self.mostrarImagenes()
+            self.eventos() 
+            self.corre=self.agenteRecorraMatriz(busqueda.rutaOptima(self.escenario))
+            #self.mostrarImagenes()
             #self.jugador.update()
             #self.jugador.mover(self.lista_mov)
             pygame.display.flip()
