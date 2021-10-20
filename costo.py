@@ -44,124 +44,106 @@ def puedeIrHacia(desde, hacia, matriz):
     if hacia == "arriba":
         try:
             if desde[0]-1 < 0:
-                print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                    hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
                 return False
             elif matriz[desde[0]-1, desde[1]] != 3.0:
                 return True
             else:
                 return False
         except IndexError:
-            print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     elif hacia == "abajo":
         try:
             if desde[0]+1 > matriz.shape[0]:
-                print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                    hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
                 return False
             elif matriz[desde[0]+1, desde[1]] != 3.0:
                 return True
             else:
                 return False
         except IndexError:
-            print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                hacia) + "\n")
+            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     elif hacia == "derecha":
         try:
             if desde[1]+1 > matriz.shape[1]:
-                print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                    hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
                 return False
             elif matriz[desde[0], desde[1]+1] != 3.0:
                 return True
             else:
                 return False
         except IndexError:
-            print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                hacia) + "\n")
+            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     elif hacia == "izquierda":
         try:
             if desde[1]-1 < 0:
-                print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                    hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
                 return False
             elif matriz[desde[0], desde[1]-1] != 3.0:
                 return True
             else:
                 return False
         except IndexError:
-            print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                hacia) + "\n")
+            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     else:
-        print("ERROR: ingreso valor \"hacia\" no valido. Usted ingreso {} \n \n".format(
-            hacia) * 3)
+        #print("ERROR: ingreso valor \"hacia\" no valido. Usted ingreso {} \n \n".format(hacia) * 3)
 
 
 def ubicacionHacia(desde, hacia, matriz):
     if hacia == "arriba":
         try:
             if desde[0]-1 < 0:
-                print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                    hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
                 return False
             elif matriz[desde[0]-1, desde[1]] != 3.0:
                 return [desde[0]-1, desde[1]]
             else:
                 return False
         except IndexError:
-            print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                hacia) + "\n")
+            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     elif hacia == "abajo":
         try:
             if desde[0]+1 > matriz.shape[0]:
-                print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                    hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
                 return False
             elif matriz[desde[0]+1, desde[1]] != 3.0:
                 return [desde[0]+1, desde[1]]
             else:
                 return False
         except IndexError:
-            print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                hacia) + "\n")
+            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     elif hacia == "derecha":
         try:
             if desde[1]+1 > matriz.shape[1]:
-                print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                    hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
                 return False
             elif matriz[desde[0], desde[1]+1] != 3.0:
                 return [desde[0], desde[1]+1]
             else:
                 return False
         except IndexError:
-            print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                hacia) + "\n")
+            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     elif hacia == "izquierda":
         try:
             if desde[1]-1 < 0:
-                print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                    hacia) + "\n")
+                #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
                 return False
             elif matriz[desde[0], desde[1]-1] != 3.0:
                 return [desde[0], desde[1]-1]
             else:
                 return False
         except IndexError:
-            print("Recorcholis esa posicion esta fuera de los parametros {}".format(
-                hacia) + "\n")
+            #print("Recorcholis esa posicion esta fuera de los parametros {}".format(hacia) + "\n")
             return False
     else:
-        print("ERROR: ingreso valor \"hacia\" no valido. Usted ingreso {} \n \n".format(
-            hacia) * 3)
+        #print("ERROR: ingreso valor \"hacia\" no valido. Usted ingreso {} \n \n".format(hacia) * 3)
 
 
 def ubicacionMeta(matrizBase):
@@ -210,7 +192,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "arriba", matriz)]
                 cola.put([costoAcomulado+1, aux_lista])
-                print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -224,7 +206,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                     ubicacionHacia(nodoactual, "arriba", matriz)]
                 cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "arriba",
                                                                       matriz)[0], ubicacionHacia(nodoactual, "arriba", matriz)[1]], aux_lista])
-                print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -239,7 +221,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "abajo", matriz)]
                 cola.put([costoAcomulado+1, aux_lista])
-                print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -253,7 +235,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                     ubicacionHacia(nodoactual, "abajo", matriz)]
                 cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "abajo",
                          matriz)[0], ubicacionHacia(nodoactual, "abajo", matriz)[1]], aux_lista])
-                print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -268,7 +250,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "derecha", matriz)]
                 cola.put([costoAcomulado+1, aux_lista])
-                print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -282,7 +264,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                     ubicacionHacia(nodoactual, "derecha", matriz)]
                 cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "derecha",
                          matriz)[0], ubicacionHacia(nodoactual, "derecha", matriz)[1]], aux_lista])
-                print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -297,7 +279,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                 aux_lista[len(aux_lista):] = [ubicacionHacia(
                     nodoactual, "izquierda", matriz)]
                 cola.put([costoAcomulado+1, aux_lista])
-                print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -311,7 +293,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                     nodoactual, "izquierda", matriz)]
                 cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "izquierda",
                          matriz)[0], ubicacionHacia(nodoactual, "izquierda", matriz)[1]], aux_lista])
-                print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -339,8 +321,7 @@ def rutaOptima(matriz):
         if ubicacionActualJugador == ubicacionDeMeta:
             return nodoMenorcostoAcomulado[1]
         else:
-            expandirNodo(colaDePrioridad, ubicacionAnteriorDelJugador, ubicacionActualJugador,
-                         ubicacionDeMontura, matriz, ruta, costoAcomulado, matrizCosto)
+            expandirNodo(colaDePrioridad, ubicacionAnteriorDelJugador, ubicacionActualJugador,ubicacionDeMontura, matriz, ruta, costoAcomulado, matrizCosto)
         if parada == 40:
             break
         else:
@@ -348,12 +329,12 @@ def rutaOptima(matriz):
 
 
 # ----------- PRUEBAS --------------------------------#
-print(rutaOptima(tablero))  # prueba de funcion rutaOptima(matriz)
+#print(rutaOptima(tablero))  # prueba de funcion rutaOptima(matriz)
 
 
 #colaDePrioridad = Queue.PriorityQueue()
 # colaDePrioridad.put([0,[ubicacionDelJugador(tablero)]])
-# print(colaDePrioridad.get())
+##print(colaDePrioridad.get())
 
 """
 a=[[1,2],[1,3],[1,4]]
@@ -366,7 +347,7 @@ print(a)
 def prueba():
     i=0
     while i != 3:
-        print(i)
+    #print(i)
         return i
         i=i+1
 
