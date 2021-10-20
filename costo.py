@@ -192,7 +192,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "arriba", matriz)]
                 cola.put([costoAcomulado+1, aux_lista])
-               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+                #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -204,9 +204,8 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
             else:
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "arriba", matriz)]
-                cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "arriba",
-                                                                      matriz)[0], ubicacionHacia(nodoactual, "arriba", matriz)[1]], aux_lista])
-               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+                cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "arriba",matriz)[0], ubicacionHacia(nodoactual, "arriba", matriz)[1]], aux_lista])
+                #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -221,7 +220,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "abajo", matriz)]
                 cola.put([costoAcomulado+1, aux_lista])
-               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+                #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -233,9 +232,8 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
             else:
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "abajo", matriz)]
-                cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "abajo",
-                         matriz)[0], ubicacionHacia(nodoactual, "abajo", matriz)[1]], aux_lista])
-               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+                cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "abajo",matriz)[0], ubicacionHacia(nodoactual, "abajo", matriz)[1]], aux_lista])
+                #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -250,7 +248,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "derecha", matriz)]
                 cola.put([costoAcomulado+1, aux_lista])
-               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+                #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -262,9 +260,8 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
             else:
                 aux_lista[len(aux_lista):] = [
                     ubicacionHacia(nodoactual, "derecha", matriz)]
-                cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "derecha",
-                         matriz)[0], ubicacionHacia(nodoactual, "derecha", matriz)[1]], aux_lista])
-               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+                cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "derecha",matriz)[0], ubicacionHacia(nodoactual, "derecha", matriz)[1]], aux_lista])
+                #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -279,7 +276,7 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
                 aux_lista[len(aux_lista):] = [ubicacionHacia(
                     nodoactual, "izquierda", matriz)]
                 cola.put([costoAcomulado+1, aux_lista])
-               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+                #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
@@ -291,9 +288,8 @@ def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista
             else:
                 aux_lista[len(aux_lista):] = [ubicacionHacia(
                     nodoactual, "izquierda", matriz)]
-                cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "izquierda",
-                         matriz)[0], ubicacionHacia(nodoactual, "izquierda", matriz)[1]], aux_lista])
-               #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
+                cola.put([costoAcomulado + matrizCosto[ubicacionHacia(nodoactual, "izquierda",matriz)[0], ubicacionHacia(nodoactual, "izquierda", matriz)[1]], aux_lista])
+                #print([costoAcomulado+1, aux_lista])  # BORRAR DESPUES
                 aux_lista = []
                 if nodoactual == nodoAnterior:
                     aux_lista = [nodoactual]
