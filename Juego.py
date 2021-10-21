@@ -48,7 +48,7 @@ class Juego:
         self.mononoke=(pygame.image.load("imagenes/mononoke.png"))
         self.fantasma=(pygame.image.load("imagenes/fantasma.png"))
         self.negro=(pygame.image.load("imagenes/negro.png"))
-        self.venado=(pygame.image.load("imagenes/venado.png"))
+        self.venado=(pygame.image.load("imagenes/mononokeVenado.png"))
         self.espiritu=(pygame.image.load("imagenes/espiritu.png"))
 
     corre = True
