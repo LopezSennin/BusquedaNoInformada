@@ -1,5 +1,5 @@
-from operator import truediv
 import numpy as np
+from numpy.lib.function_base import append
 #from anytree import Node
 
 tablero=np.loadtxt('matriz.txt',skiprows=0)      
@@ -13,6 +13,7 @@ def coordenadaDeDato(dato, matrizBase):
 				return [i,j]
 
 agente=coordenadaDeDato(1,tablero) #lo necesito para hacer una validación más adelante 
+meta=coordenadaDeDato(5,tablero)
 
 def datoSegunCoordenada(tupla,matrizBase):
 	return matrizBase[tupla[0]][tupla[1]]
@@ -52,13 +53,6 @@ def elementosIguales(lista):
 				auxBool=False
 	return auxBool
 				
-
-		
-def vaciarLista(auxParaNuevaRaiz):
-	while not (auxParaNuevaRaiz == []):
-		auxParaNuevaRaiz.pop()
-
-
 
 
 listaNodosNivel=[]
@@ -106,9 +100,10 @@ def funcionBajar2(nuevaRaiz):
 		aux=almacenarCoordenada2(izquierda,listaNodosAux)
 		if aux == True:
 			return True
+		
 
 		listaNodosNivel.extend(listaNodosAux)
-		listaNodosAux.clear
+		listaNodosAux.clear()
 
 	return False	
 			
@@ -116,34 +111,35 @@ def funcionBajar2(nuevaRaiz):
 
 def encontrarMeta2():
 
-	encontroMeta= False
-	contador=5
-	listaRecorridoTotal=[]
+	contador=9
+	listaRecorridoTotal=[] # el resultado final
 	listaRecorriendo=[]
+	listaNiveles=[]
 	
-	
+	listaRecorriendo.append(agente)
+
 
 	#while encontroMeta== False:
-	for j in range (0, contador):	
-		if j == 0:
-			listaRecorriendo.append(agente)
-			print('lista recorriendo')
-			print(listaRecorriendo)
+	for j in range (0, contador):
 
 		nodosArecorrer=len(listaRecorriendo)
-
 
 		for i in range(0,nodosArecorrer ):
 			aux=funcionBajar2(listaRecorriendo[i])
 			print('aqui')
 			print(listaRecorriendo[i])
+			#if not print(buscarEnLista(listaRecorridoTotal,listaRecorriendo[i])):
+			#		listaRecorridoTotal.append(listaRecorriendo[i])
 			if aux==True:
 				#encontroMeta=True
 				print('se encontró la meta en nivel ' + str(j))
 				break
 			#listaRecorriendo.clear()
-			
 
+		if buscarEnLista(listaNodosNivel, meta):
+			print('Se encontró la meta en nivel ' +str(j))
+			listaNodosNivel.append(meta)
+			break
 
 		listaRecorridoTotal.extend(listaRecorriendo)
 		listaRecorriendo.clear()
@@ -151,14 +147,14 @@ def encontrarMeta2():
 		listaNodosNivel.clear()
 		print('no encontró meta en nivel ' +str(j))
 		print('Final antes de iterar nuevamente: lTotal')
-		#print(listaRecorridoTotal)
+
+		print(listaRecorridoTotal)
 		#print(listaRecorriendo)
 		#print(listaNodosNivel)
 		#print(contador)
-
-	
-
+		#print(buscarEnLista(listaRecorridoTotal,[0,0]))
 		
+
 encontrarMeta2()
 
 
