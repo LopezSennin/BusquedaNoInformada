@@ -48,8 +48,9 @@ class Juego:
         self.mononoke=(pygame.image.load("imagenes/mononoke.png"))
         self.fantasma=(pygame.image.load("imagenes/fantasma.png"))
         self.negro=(pygame.image.load("imagenes/negro.png"))
-        self.venado=(pygame.image.load("imagenes/mononokeVenado.png"))
+        self.venado=(pygame.image.load("imagenes/venado.png"))
         self.espiritu=(pygame.image.load("imagenes/espiritu.png"))
+        self.mononokeVenado=(pygame.image.load("imagenes/mononokeVenado.png"))
 
     corre = True
     FPS=60
@@ -77,16 +78,28 @@ class Juego:
                 elif matriz[i][j]==5:
                     escala=pygame.transform.scale(self.espiritu,[self.anchoT,self.altoT])
                     self.ventana.blit(escala,[j*100,i*100])
+                elif matriz[i][j]==6:
+                    escala=pygame.transform.scale(self.mononokeVenado,[self.anchoT,self.altoT])
+                    self.ventana.blit(escala,[j*100,i*100])
         self.rejilla()     
         pygame.display.update()
 
     def agenteRecorraMatriz(self, lista):
         contador = 0
+        paso_por_montura=False
         for coordenada in lista:
             busqueda.copiarMatrizEnOtraMatriz_aux(self.matriztemporal,self.escenario)
             ubicacion_del_agente=busqueda.ubicacionDelJugador(self.matriztemporal)
             self.matriztemporal[ubicacion_del_agente[0],ubicacion_del_agente[1]]=0
-            self.matriztemporal[coordenada[0],coordenada[1]]=1
+            
+            if coordenada == busqueda.ubicacionMontura(self.escenario):
+                self.matriztemporal[coordenada[0],coordenada[1]]=6
+                paso_por_montura=True
+            elif paso_por_montura:
+                    self.matriztemporal[busqueda.ubicacionMontura(self.escenario)[0],busqueda.ubicacionMontura(self.escenario)[1]]=0
+                    self.matriztemporal[coordenada[0],coordenada[1]]=6
+            else:
+                self.matriztemporal[coordenada[0],coordenada[1]]=1
             self.mostrarImagenes(self.matriztemporal)      
             pygame.time.wait(1000)
             contador=contador+1
