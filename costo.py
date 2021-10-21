@@ -184,6 +184,29 @@ def copiarMatrizEnOtraMatriz_aux(matriz_fuente, matriz_destino):
         for j in range(matriz_fuente.shape[1]):
             matriz_fuente[i,j]=matriz_destino[i,j]
 
+def expandirNodoHacia(cola,nivel,lista,desde,hacia, matriz):
+    ubicacion_meta=ubicacionMeta(matriz)
+    prioridadHacia=10
+    if hacia == "arriba":
+        prioridadHacia=1
+    elif hacia=="derecha":
+        prioridadHacia=2
+    elif hacia=="abajo":
+        prioridadHacia=3
+    elif hacia=="izquierda":
+        prioridadHacia=4
+    else:
+        print("erro en expandirNodoHacia() se ingrso {} ".format(hacia))
+    if puedeIrHacia(desde, hacia, matriz):
+        aux_lista = []
+        for i in range(len(lista)):
+            aux_lista[len(lista):] = [lista[i]]
+        aux_lista[len(aux_lista):]=[ubicacionHacia(desde, hacia, matriz)]
+        cola.put([nivel,prioridadHacia,aux_lista])
+        ubicacion_actual_jugador=aux_lista[len(aux_lista)-1]
+        if ubicacion_actual_jugador==ubicacion_meta:
+            return aux_lista
+
 def expandirNodo(cola, nodoAnterior, nodoactual, ubicacionMontura, matriz, lista, costoAcomulado, matrizCosto):
 
     if nodoactual == nodoAnterior:
@@ -330,7 +353,32 @@ def rutaOptima(matriz):
         else:
             parada = parada + 1
 
+def profindidadInteractiva(matriz):
+    parada=2
+    ubicacion_meta=ubicacionMeta(matriz)
+    
 
+    while True:
+        a=[]
+        cola_de_prioridad=Queue.PriorityQueue()
+        cola_de_prioridad.put([0,0,[ubicacionDelJugador(matriz)]])
+        while True:
+            print("a")
+            nodo_mayor_prioridad=cola_de_prioridad.get()
+            if nodo_mayor_prioridad[0]+1==parada:
+                cola_de_prioridad.put(nodo_mayor_prioridad)
+                break
+            ubicacion_actual_jugador=nodo_mayor_prioridad[2][len(nodo_mayor_prioridad[2])-1]
+            a=expandirNodoHacia(cola_de_prioridad, nodo_mayor_prioridad[0]+1, nodo_mayor_prioridad[2],ubicacion_actual_jugador,"arriba", matriz)
+            a=expandirNodoHacia(cola_de_prioridad, nodo_mayor_prioridad[0]+1, nodo_mayor_prioridad[2],ubicacion_actual_jugador,"derecha", matriz)
+            a=expandirNodoHacia(cola_de_prioridad, nodo_mayor_prioridad[0]+1, nodo_mayor_prioridad[2],ubicacion_actual_jugador,"abajo", matriz)
+            a=expandirNodoHacia(cola_de_prioridad, nodo_mayor_prioridad[0]+1, nodo_mayor_prioridad[2],ubicacion_actual_jugador,"izquierda", matriz)
+        parada=parada+1
+        print(parada)
+        if a != [] and a!= None:
+            return a
+
+print(profindidadInteractiva(tablero))
 # ----------- PRUEBAS --------------------------------#
 #print(rutaOptima(tablero))  # prueba de funcion rutaOptima(matriz)
 
