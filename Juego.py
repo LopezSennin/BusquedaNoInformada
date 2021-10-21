@@ -96,7 +96,7 @@ class Juego:
                 self.matriztemporal[coordenada[0],coordenada[1]]=6
                 paso_por_montura=True
             elif paso_por_montura:
-                    self.matriztemporal[busqueda.ubicacionMontura(self.escenario)[0],busqueda.ubicacionMontura(self.escenario)[1]]
+                    self.matriztemporal[busqueda.ubicacionMontura(self.escenario)[0],busqueda.ubicacionMontura(self.escenario)[1]]=0
                     self.matriztemporal[coordenada[0],coordenada[1]]=6
             else:
                 self.matriztemporal[coordenada[0],coordenada[1]]=1
