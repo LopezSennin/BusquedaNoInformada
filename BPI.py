@@ -47,7 +47,6 @@ def elementosIguales(lista):
 		aux=lista[0]
 		for i in range(1, len(lista)):
 			if (lista[i] == aux) :
-				print('Alguno Entró en el area MAluca')
 				auxBool= True
 			else: 
 				auxBool=False
@@ -61,18 +60,18 @@ listaNodosAux=[]
 def almacenarCoordenada2(dato,nodosRecorridos):
 	if esLimite(dato)== False and esObstaculo(dato,tablero)== False:
 		if nodosRecorridos ==[]:
-			if not dato==agente: #para que no se me devuelva a la raíz
-				listaNodosAux.append(dato)
+			
+			listaNodosAux.append(dato)
 				#print(listaNodosAux)
-				if  esMeta(dato,tablero): 
-					return True
+			if  esMeta(dato,tablero): 
+				return True
 		else:
 			if not buscarEnLista(nodosRecorridos,dato):
-				if not dato==agente: #para que no se me devuelva a la raíz
-					listaNodosAux.append(dato)
+		
+				listaNodosAux.append(dato)
 					#print(listaNodosAux)
-					if  esMeta(dato,tablero): 
-						return True
+				if  esMeta(dato,tablero): 
+					return True
 
 
 
@@ -80,30 +79,36 @@ def almacenarCoordenada2(dato,nodosRecorridos):
 
 
 
-def funcionBajar2(nuevaRaiz):
+def funcionBajar2(nuevaRaiz, listaRecorridoTotal):
 	if esObstaculo(nuevaRaiz,tablero)== False and esLimite(nuevaRaiz) == False:
+
+		#if listaNodosAux.append(nuevaRaiz)
 
 		arriba=[nuevaRaiz[0]-1,nuevaRaiz[1]]
 		abajo=[nuevaRaiz[0]+1,nuevaRaiz[1]]
 		derecha=[nuevaRaiz[0],nuevaRaiz[1]+1]
 		izquierda=[nuevaRaiz[0],nuevaRaiz[1]-1]
 
-		aux=almacenarCoordenada2(arriba,listaNodosAux)
-		if aux == True:
-			return True
-		aux=almacenarCoordenada2(abajo,listaNodosAux)
-		if aux == True:
-			return True
-		aux=almacenarCoordenada2(derecha,listaNodosAux)
-		if aux == True:
-			return True
-		aux=almacenarCoordenada2(izquierda,listaNodosAux)
-		if aux == True:
-			return True
-		
+		listaNodosAux.append(nuevaRaiz) #almacenamos primero la raiz
 
+		aux=almacenarCoordenada2(arriba, listaRecorridoTotal)
+		if aux == True:
+			return True
+		aux=almacenarCoordenada2(abajo,listaRecorridoTotal)
+		if aux == True:
+			return True
+		aux=almacenarCoordenada2(derecha,listaRecorridoTotal)
+		if aux == True:
+			return True
+		aux=almacenarCoordenada2(izquierda,listaRecorridoTotal)
+		if aux == True:
+			return True
+			
+		#corregir acá
+			
 		listaNodosNivel.extend(listaNodosAux)
 		listaNodosAux.clear()
+
 
 	return False	
 			
@@ -114,9 +119,10 @@ def encontrarMeta2():
 	contador=9
 	listaRecorridoTotal=[] # el resultado final
 	listaRecorriendo=[]
-	listaNiveles=[]
+	#listaNiveles=[]
 	
 	listaRecorriendo.append(agente)
+	#listaRecorridoTotal.append(agente)
 
 
 	#while encontroMeta== False:
@@ -124,38 +130,70 @@ def encontrarMeta2():
 
 		nodosArecorrer=len(listaRecorriendo)
 
-		for i in range(0,nodosArecorrer ):
-			aux=funcionBajar2(listaRecorriendo[i])
+		for i in range(0,nodosArecorrer):
+			aux=funcionBajar2(listaRecorriendo[i],listaRecorridoTotal)
 			print('aqui')
 			print(listaRecorriendo[i])
 			#if not print(buscarEnLista(listaRecorridoTotal,listaRecorriendo[i])):
 			#		listaRecorridoTotal.append(listaRecorriendo[i])
 			if aux==True:
 				#encontroMeta=True
-				print('se encontró la meta en nivel ' + str(j))
+				print('se encontro la meta en nivel ' + str(j))
 				break
 			#listaRecorriendo.clear()
 
 		if buscarEnLista(listaNodosNivel, meta):
-			print('Se encontró la meta en nivel ' +str(j))
-			listaNodosNivel.append(meta)
-			break
+			print('Se encontro la meta en nivel ' +str(j))
+			#para mejorar la gráfica
+			print('---------------------------------------------------------------------------------------------------------')
+			listanueva=[]
+			for i in range(0,len(listaNodosNivel)):
+				if listaNodosNivel[i]==meta:
+					listanueva.append(listaNodosNivel[i])
+					break
+				else:
+					listanueva.append(listaNodosNivel[i])
 
-		listaRecorridoTotal.extend(listaRecorriendo)
-		listaRecorriendo.clear()
-		listaRecorriendo.extend(listaNodosNivel)
-		listaNodosNivel.clear()
-		print('no encontró meta en nivel ' +str(j))
-		print('Final antes de iterar nuevamente: lTotal')
+			listaRecorriendo.extend(listanueva)
+			print(listaRecorriendo)
+			print('---------------------------------------------------------------------------------------------------------')
+			return listaRecorriendo
 
-		print(listaRecorridoTotal)
+		
+		if  not listaRecorridoTotal ==[]:
+			for i in range(0,len(listaRecorriendo)):
+				if not buscarEnLista(listaRecorridoTotal,listaRecorriendo[i]):
+					listaRecorridoTotal.append(listaRecorriendo[i])
+					print(listaRecorriendo[i])
+
+			listaRecorriendo.clear()
+			listaRecorriendo.extend(listaNodosNivel)
+			listaNodosNivel.clear()
+			print('no encontró meta en nivel ' +str(j))
+			print('Final antes de iterar nuevamente: lTotal')
+
+		if  listaRecorridoTotal ==[]:
+
+			listaRecorridoTotal.extend(listaRecorriendo)
+			listaRecorriendo.clear()
+			listaRecorriendo.extend(listaNodosNivel)
+			listaNodosNivel.clear()
+			print('no encontró meta en nivel ' +str(j))
+			print('Final antes de iterar nuevamente: lTotal')
+
+			#print(listaRecorridoTotal)
+
+		print(listaRecorriendo)
+
 		#print(listaRecorriendo)
 		#print(listaNodosNivel)
 		#print(contador)
 		#print(buscarEnLista(listaRecorridoTotal,[0,0]))
+	
 		
 
-encontrarMeta2()
+solucion=encontrarMeta2()
+print(solucion)
 
 
 
