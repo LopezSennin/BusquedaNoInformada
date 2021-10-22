@@ -5,6 +5,7 @@ import numpy as np
 import time
 from threading import *
 import costo as busqueda
+import BPI as busquedaprofundidad
 # se inicializa pygame
 pygame.init()
 
@@ -113,10 +114,15 @@ class Juego:
     def run(self):
         while self.corre:
             self.eventos() 
-            self.corre=self.agenteRecorraMatriz(busqueda.rutaOptima(self.escenario))
+            #self.corre=self.agenteRecorraMatriz(busqueda.rutaOptima(self.escenario))
+            meta=busquedaprofundidad.encontrarMeta2()
+            meta2=busquedaprofundidad.solucion
+            self.corre=self.agenteRecorraMatriz(meta2)
+
             pygame.display.flip()
         self.reloj.tick(self.FPS)
         pygame.quit()
+
 
     def eventos(self):
         for event in pygame.event.get():

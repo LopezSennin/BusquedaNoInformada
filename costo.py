@@ -353,7 +353,7 @@ def rutaOptima(matriz):
         else:
             parada = parada + 1
 
-def profindidadInteractiva(matriz):
+#def profindidadInteractiva(matriz):
     parada=2
     ubicacion_meta=ubicacionMeta(matriz)
     
@@ -378,7 +378,7 @@ def profindidadInteractiva(matriz):
         if a != [] and a!= None:
             return a
 
-print(profindidadInteractiva(tablero))
+#print(profindidadInteractiva(tablero))
 # ----------- PRUEBAS --------------------------------#
 #print(rutaOptima(tablero))  # prueba de funcion rutaOptima(matriz)
 
